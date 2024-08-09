@@ -12,3 +12,14 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Loans{
+  id Int @id @default(autoincrement())
+  name String
+  document String @unique
+  age Int
+  income Float
+  location String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
