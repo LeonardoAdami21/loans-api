@@ -7,5 +7,73 @@
     "contact": {
       "name": "Leonardo Adami"
     }
+  },
+  "tags": [
+    {
+      "name": "Loans",
+      "description": "Operations about loans"
+    }
+  ],
+  "paths": {
+    "/loans": {
+      "post": {
+        "tags": ["Loans"],
+        "summary": "Create a new loan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Loan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Loan created"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Loans"],
+        "summary": "Get all loans",
+        "responses": {
+          "200": {
+            "description": "Loans found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Loan": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          },
+          "income": {
+            "type": "number"
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "document", "age", "income", "location"]
+      }
+    }
   }
 }
