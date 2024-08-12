@@ -11,21 +11,21 @@ const create = async (req, res) => {
       income,
       location,
     });
-    return res.status(201).send({
+    return res.status(201).json({
       customer: name,
       loans,
     });
   } catch (error) {
-    return res.status(400).send({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
 };
 
 const findAll = async (req, res) => {
   try {
     const loans = await loanService.findAll();
-    return res.status(200).send(loans);
+    return res.status(200).json(loans);
   } catch (error) {
-    return res.status(500).send({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 
